@@ -3,7 +3,7 @@ use dashmap::DashMap;
 use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref SUBSRICBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
+    static ref SUBSCRIBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
 }
 
 pub struct SubscriberRepository;
@@ -11,11 +11,11 @@ pub struct SubscriberRepository;
 impl SubscriberRepository {
     pub fn add(product_type: &str, subscriber: Subscriber) -> Subscriber {
         let subscriber_value = subscriber.clone();
-        if SUBSRICBERS.get(product_type).is_none() {
-            SUBSRICBERS.insert(String::from(product_type), DashMap::new());
+        if SUBSCRIBERS.get(product_type).is_none() {
+            SUBSCRIBERS.insert(String::from(product_type), DashMap::new());
         };
 
-        SUBSRICBERS
+        SUBSCRIBERS
             .get(product_type)
             .unwrap()
             .insert(subscriber_value.url.clone(), subscriber_value);
@@ -23,11 +23,11 @@ impl SubscriberRepository {
     }
 
     pub fn list_all(product_type: &str) -> Vec<Subscriber> {
-        if SUBSRICBERS.get(product_type).is_none() {
-            SUBSRICBERS.insert(String::from(product_type), DashMap::new());
+        if SUBSCRIBERS.get(product_type).is_none() {
+            SUBSCRIBERS.insert(String::from(product_type), DashMap::new());
         };
 
-        return SUBSRICBERS
+        return SUBSCRIBERS
             .get(product_type)
             .unwrap()
             .iter()
@@ -36,10 +36,10 @@ impl SubscriberRepository {
     }
 
     pub fn delete(product_type: &str, url: &str) -> Option<Subscriber> {
-        if SUBSRICBERS.get(product_type).is_none() {
-            SUBSRICBERS.insert(String::from(product_type), DashMap::new());
+        if SUBSCRIBERS.get(product_type).is_none() {
+            SUBSCRIBERS.insert(String::from(product_type), DashMap::new());
         };
-        let result = SUBSRICBERS.get(product_type).unwrap().remove(url);
+        let result = SUBSCRIBERS.get(product_type).unwrap().remove(url);
         if !result.is_none() {
             return Some(result.unwrap().1);
         }
