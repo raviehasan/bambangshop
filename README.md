@@ -78,6 +78,12 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-1
 
+1. Menurut saya, single Model struct sudah cukup pada kasus BambangShop ini. Hal ini dikarenakan belum terlalu kompleks, sehingga tidak diperlukan interface atau trait karena hanya ada tepat 1 tipe subscriber. Note that pada kasus lain yang lebih kompleks, misal subscriber perlu dipecah menjadi beberapa tipe, maka interface bisa menjadi pilihan yang tepat. Tetapi, pada kasus BambangShop, single Model struct sudah cukup.
+
+2. Menurut saya, penggunaan DashMap sudah tepat karena dapat mengakses valuenya dengan key, tidak harus index berupa integer dari 0,1,... Jika menggunakan Vec, akan menjadi tidak efisien karen ahrus melakukan iterasi satu per satu hingga menemukan key yang diinginkan. Dengan demikian, DashMap menjadi lebih efisien. Note that tetap bisa menggunakan Vec, tetapi untuk efisiensi, lebih baik menggunakan DashMap.
+
+3. Menurut saya, singleton maupun dashmap sama-sama diperlukan. Hal ini dikarenakan Singleton akan assure bahwa terdapat tepat satu instance dari interface dan DashMap akan assure bahwa data subscriber tetap safe untuk digunakan secara concurrent (oleh beberapa thread).
+
 #### Reflection Publisher-2
 
 #### Reflection Publisher-3
