@@ -86,4 +86,11 @@ This is the place for you to write reflections:
 
 #### Reflection Publisher-2
 
+1. Menurut saya, Service dan Repository perlu dipisah untuk separation of concerns (single responsibility principle). Dengan dipisahnya Service dan Repository, jika ingin memodifikasi bagian yang berhubungan dengan program logic, kita hanya perlu mengubah bagian Service tanpa harus ikut mengubah Repository. Begitupun sebaliknya, ketika ingin mengubah bagian storage (Repository), kita tidak perlu mengubah bagian Service (program logic). Dengan demikian, program menjadi lebih maintainable dan mudah untuk dimodifikasi. Tanpa memisahkan Service dan Repository dari Model, akan ada terlalu banyak responsibility pada Model, sehingga sulit untuk dimaintain.
+
+2. Menurut saya, apabila kita memaksakan hanya menggunakan Model saja (tanpa pemisahan Service dan Repository), maka maintainability kode akan berkurang secara signifikan. Moreover, kita memiliki 3 Model (program, subscriber, dan notification). Sehingga, kompleksitas kode akan bertambah karena ketika ingin memodifikasi bagian logic, terpaksa harus mereview bagian storage, dan sebaliknya.
+
+3. Setelah saya explore, Postman dapat digunakan untuk testing API dari suatu aplikasi. Dapat digunakan dengan method GET, POST, dan lain sebagainya untuk memeriksa apakah aplikasi berjalan dengan benar sesuai ekspektasi. Note that kita dapat membuat custom body request, token, dan lain sebagainya. Maka dari itu, menurut saya Postman adalah salah satu tools yang berguna untuk pengembangan aplikasi. 
+
+
 #### Reflection Publisher-3
