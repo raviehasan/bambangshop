@@ -94,3 +94,12 @@ This is the place for you to write reflections:
 
 
 #### Reflection Publisher-3
+
+1. Pada kasus tutorial ini, kita menggunakan observer pattern variasi push model. Hal ini dikarenakan publisher melakukan push data kepasa subscriber. 
+
+2. Observer pattern variasi pull model:
+- Kekurangan: Terdapat latency pada informasi. Hal ini dikarenakan informasi baru hanya dapat diperoleh apabila subscriber melakukan request untuk mendapatkan informasi tersebut, jika tidak maka tidak akan diperbarui.
+- Kelebihan: Efisiensi. Hal ini dikarenakan tidak perubahan informasi hanya akan terjadi ketika kita memerlukan informasi tersebut, jijka tidak maka tidak akan terjadi perubahan pada informasi yang ada.
+Sehingga, perubahan yang hanya akan terjadi ketika ada request yang memerlukan informasi tersebut memiliki plus minus (menjadi kekurangan dan kelebihan).
+
+3. Jika notification process tidak menerapkan multi-threading, aplikasi tidak akan bisa mengirimkan notifikasi kepada subscriber secara concurrent. Dengan demikian, waktu yang diperlukan untuk mengirimkan notifikasi ke semua subscriber akan menjadi jauh lebih lama karena single-threaded (harus berjalan secara sequential). Maka dari itu, jika tidak menggunakan mutl-threading, akan memberikan dampak negatif secara signifikan pada performance aplikasi dari segi running time.
