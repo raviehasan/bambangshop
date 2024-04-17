@@ -3,7 +3,7 @@ use dashmap::DashMap;
 use lazy_static::lazy_static;
 
 lazy_static! {
-    static ref SUBSRICBERS: Dashmap<String, Dashmap<String, Subscriber>> = Dashmap::new();
+    static ref SUBSRICBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
 }
 
 pub struct SubscriberRepository;
